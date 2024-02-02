@@ -32,7 +32,7 @@ def system_(date, categories):
 
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
-def chat_completion(client, user, date, categories, model=model):
+def chat_completion(client, user, date, categories, system_, model=model):
     """Send a chat completion request to the OpenAI API."""
     try:
         response = client.chat.completions.create(
@@ -64,7 +64,13 @@ def parse_response(text):
     return scores
 
 
-def main(api_key_path="key", output_file="output.csv"):
+def main(
+    conferences=None,
+    api_key_path="key",
+    output_file="output.csv",
+    categories=categories,
+    system_=system_,
+):
     """Main function to collect sentiment scores for each category from the OpenAI API."""
     # Load OpenAI API key
     with open(api_key_path, "r") as f:
@@ -72,13 +78,18 @@ def main(api_key_path="key", output_file="output.csv"):
     client = OpenAI(api_key=api_key)
 
     # Load ECB conferences
-    conferences = load_ecb_conferences()
+    if conferences is None:
+        conferences = load_ecb_conferences()
 
     # Collect responses in a list
     responses = []
     for idx, row in tqdm(conferences.iterrows()):
         response = chat_completion(
-            client, user=row["text"], date=row["date"], categories=categories
+            client,
+            user=row["text"],
+            date=row["date"],
+            categories=categories,
+            system_=system_,
         )
         responses.append((idx, response))
 
