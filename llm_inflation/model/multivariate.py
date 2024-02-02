@@ -35,11 +35,10 @@ class MultivariateForecaster:
         self,
         model_type: str,
         horizon: int,
-        lags: Union(int, list[int]),
+        lags: Union[int, list[int]],
         prices: TimeSeries,
-        weights: pd.DataFrame,
-        covariates: Optional(TimeSeries) = None,
-        lags_covariates: Optional(Union(int, list[int])) = None,
+        covariates: Optional[TimeSeries] = None,
+        lags_covariates: Optional[Union[int, list[int]]] = None,
     ):
         """
         Initialize the model.
@@ -55,15 +54,12 @@ class MultivariateForecaster:
             The lags to use for the model (positive int or negative list)
         prices : TimeSeries
             The prices to forecast.
-        weights : pd.DataFrame
-            The weights to use for aggregation.
         covariates : TimeSeries (optional)
             The covariates to use for the model.
         lags_covariates : list (optional)
             The lags to use for the covariates.
         """
         self.prices = prices
-        self.weights = weights
         self.covariates = covariates
         self.lags_covariates = lags_covariates
         self.horizon = horizon
@@ -94,8 +90,8 @@ class MultivariateForecaster:
 
     def fit(
         self,
-        new_prices: Optional(TimeSeries) = None,
-        new_covariates: Optional(TimeSeries) = None,
+        new_prices: Optional[TimeSeries] = None,
+        new_covariates: Optional[TimeSeries] = None,
     ):
         """
         Fit the model. Uses the initial prices and covariates by default.
