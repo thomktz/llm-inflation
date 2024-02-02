@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "llm-inflation"
+version = "0.1.0"
+description = "Project: Machine Learning for Trading and Portfolio Management (ENSAE)"
+authors = ["Thomas Kientz <thomas@kientz.net>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+ipykernel = "^6.29.0"
+ecb-scraper = "0.1.2"
+cpilib = "0.2.6"
+nbformat = "^5.9.2"
+openai = "^1.10.0"
+darts = "^0.27.2"
+jupyter = "^1.0.0"
+matplotlib = "^3.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
