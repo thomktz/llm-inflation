@@ -1,3 +1,5 @@
 key
 cache/
 *.pyc
+*.whl
+*.gz

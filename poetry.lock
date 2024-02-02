@@ -659,13 +659,13 @@ test-no-images = ["pytest", "pytest-cov", "pytest-xdist", "wurlitzer"]
 
 [[package]]
 name = "cpilib"
-version = "0.2.6"
+version = "0.3.0"
 description = "Library for handling CPI data"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "cpilib-0.2.6-py3-none-any.whl", hash = "sha256:603c3cce487cf883f0e7487dbf3f35011c018052b728b50c6ae2621eeed4cf06"},
-    {file = "cpilib-0.2.6.tar.gz", hash = "sha256:e80b5089a94475c63d6506ffb07e35439edd29aef8917c11bb55c8634e96408d"},
+    {file = "cpilib-0.3.0-py3-none-any.whl", hash = "sha256:ff4dff049d54db33f9cebe1805277f80622738fb4a5d1e68ca79f181e670d18a"},
+    {file = "cpilib-0.3.0.tar.gz", hash = "sha256:99bd600907e600258943f8b8834b08f8697bfd3ec60c2c75e9a4285b864edec9"},
 ]
 
 [package.dependencies]
@@ -4775,4 +4775,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "5eaae25c6a7f2cb7774e26af2b76e3b6a8fb2da4c13ffe2a0b03023b4893cef5"
+content-hash = "624435675ef56e58772cf5107f77e87bd229c2df825e4b4c1d5c1ba7132d7068"
