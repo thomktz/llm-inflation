@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "llm-inflation"
-version = "0.1.4"
+version = "0.1.5"
 description = "Project: Machine Learning for Trading and Portfolio Management (ENSAE)"
 authors = ["Thomas Kientz <thomas@kientz.net>"]
 license = "MIT"

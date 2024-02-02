@@ -6,11 +6,10 @@ Code for my Machine Learning for Trading and Portfolio Management course project
 
 The package was published to PyPi, and can be installed using
 
-´´´bash
+```bash
 pip install llm-inflation
-´´´
+```
 
 ## Usage
 
-**GPT API**
-**Darts model wrapper**
+Please refer to the Colab notebook, and the code's docstrings.
