@@ -16,6 +16,7 @@ categories = [
 ]
 
 def system_(date, categories):
+    """System message to reset the context and prompt the user for the next input."""
     return f"""
         Reset context. Analyze the following ECB press conference from {date} without using any knowledge beyond that date. 
         Provide a list of sentiment scores for each of the specified categories using a scale from 0 to 9, where 0 indicates a future decrease, 4 or 5 indicates no change, and 9 indicates a future increase.
@@ -27,6 +28,7 @@ def system_(date, categories):
     
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
 def chat_completion(client, user, date, categories, model=model):
+    """Send a chat completion request to the OpenAI API."""
     try:
         response = client.chat.completions.create(
             model=model,
@@ -36,13 +38,19 @@ def chat_completion(client, user, date, categories, model=model):
             ],
             temperature=0,
         )
-        # Just return the response for now, handle exceptions in a uniform way
         return response
     except Exception as e:
         print(f"Error for {date}: {e}")
-        return None  # Return None on error
+        return None
 
 def parse_response(text):
+    """
+    Parse API response.
+    
+    Despite the clear instructions, the user might not adhere to the format. 
+    This function attempts to parse the response.
+    GPT4 was much better at following instructions.
+    """
     if text.startswith("Interest rates"):
         scores = [int(str_[0]) for str_ in text.split(": ")[1:]]
     else :
@@ -51,6 +59,7 @@ def parse_response(text):
 
     
 def main(api_key_path="key", output_file="output.csv"):
+    """Main function to collect sentiment scores for each category from the OpenAI API."""
     # Load OpenAI API key
     with open(api_key_path, "r") as f:
         api_key = f.read()

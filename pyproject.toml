@@ -17,6 +17,8 @@ darts = "^0.27.2"
 jupyter = "^1.0.0"
 matplotlib = "^3.8.2"
 
+# Include the data files in the package
+include = ["llm_inflation/data/*"]
 
 [build-system]
 requires = ["poetry-core"]
